@@ -105,6 +105,14 @@ class Throttle:
 
 
 def download(url, headers, proxy, num_retries, data=None):
+    """
+    :param url:
+    :param headers:
+    :param proxy:
+    :param num_retries:
+    :param data:
+    :return:
+    """
     print 'Downloading:', url
     request = urllib2.Request(url, data, headers)
     opener = urllib2.build_opener()
@@ -130,14 +138,24 @@ def download(url, headers, proxy, num_retries, data=None):
 
 
 def normalize(seed_url, link):
-    """Normalize this URL by removing hash and adding domain
+    """
+    Normalize this URL by removing hash and adding domain
+
+    :param seed_url:
+    :param link:
+    :return:
     """
     link, _ = urlparse.urldefrag(link)  # remove hash to avoid duplicates
     return urlparse.urljoin(seed_url, link)
 
 
 def same_domain(url1, url2):
-    """Return True if both URL's belong to same domain
+    """
+    Return True if both URL's belong to same domain
+
+    :param url1:
+    :param url2:
+    :return:
     """
     return urlparse.urlparse(url1).netloc == urlparse.urlparse(url2).netloc
 
